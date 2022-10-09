@@ -18,11 +18,13 @@ ASSIGNMENT RULES
 
 // JS Basics
 
-/* EXERCISE A
+/* EXERCISE A 
 
 Create a variable called test and assign a string value to it.
 
 */
+
+let test = "betest";
 
 /* EXERCISE B
 
@@ -30,11 +32,22 @@ Create a variable called sum and assign to it the result of the sum between the 
 
 */
 
+let array1 = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+let reducer = (accumulator, curr) => accumulator + curr;
+
+let sum = array1.reduce(reducer);
+
+console.log(sum);
+
 /* EXERCISE C
 
 Create a variable called random and assign to it a random number between 0 and 20 (it should be randomly created at each execution).
 
 */
+
+let random = Math.floor(Math.random() * 20);
+
+console.log(random);
 
 /* EXERCISE D
 
@@ -42,11 +55,17 @@ Create a variable called me and assign to it an object containing the following 
 
 */
 
+let me = { name: "panni", surname: "szűcs", age: 22 };
+
 /* EXERCISE E
 
 Write a piece of code for programmatically removing the age property from the previously create object.
 
 */
+
+delete me.age;
+
+console.log(me);
 
 /* EXERCISE F
 
@@ -54,11 +73,20 @@ Write a piece of code for programmatically adding to the me object you defined b
 
 */
 
+let skills = ["html", "css", "js"];
+me.skills = skills;
+
+console.log(me);
+
 /* EXERCISE G
 
 Write a piece of code for programmatically removing the last skill from the skills array inside the me object.
 
 */
+
+me.skills.pop();
+
+console.log(me);
 
 // JS Functions
 
@@ -68,19 +96,43 @@ Write a function called dice; it should randomize an integer number between 1 an
 
 */
 
+function dice() {
+  return Math.floor(Math.random() * (6 - 1) + 1) + 1;
+}
+
+let integers = dice();
+
+console.log(integers);
+
 /* EXERCISE 2
 
 Write a function called whoIsBigger which receives 2 numbers as parameters and returns the biggest one.
 
 */
 
+function whoIsBigger(num1, num2) {
+  if (num1 > num2) {
+    return num1;
+  } else {
+    return num2;
+  }
+}
+
+console.log(whoIsBigger(8, 2));
+
 /* EXERCISE 3
 
 Write a function called splitMe which receives a string as a parameter and returns an array with every word in that string.
 
-Ex.: splitMe("I love coding") => returns ["I", "Love", "Coding"]
+Ex.: splitMe("I love coding") => returns ["I", "Love", "Coding"]c
 
 */
+
+function splitMe(stringPar) {
+  return stringPar.split(" ");
+}
+
+console.log(splitMe("I love my bf."));
 
 /* EXERCISE 4
 
@@ -90,6 +142,16 @@ If the boolean value is true it should return the string without the first lette
 
 */
 
+function deleteOne(string2, bool1) {
+  if (bool1 == true) {
+    return (string2 = string2.substring(1));
+  } else {
+    return string2.slice(0, -1);
+  }
+}
+
+console.log(deleteOne("Random words blabla", false));
+
 /* EXERCISE 5
 
 Write a function called onlyLetters which receives a string as a parameter and returns it removing all the digits.
@@ -98,17 +160,43 @@ Ex.: onlyLetters("I have 4 dogs") => returns "I have dogs"
 
 */
 
+function onlyLetters(string3) {
+  return string3.replace(/[0-9]/g, "");
+}
+
+console.log(onlyLetters("I actually have 6 cats"));
+
 /* EXERCISE 6
 
 Write a function called isThisAnEmail which receives a string as a parameter and returns true if the string is a valid email address.
 
 */
 
+function isThisAnEmail(string4) {
+  let regEmail =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gi;
+  if (regEmail.test(string4)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(isThisAnEmail("blabla"));
+
 /* EXERCISE 7
 
 Write a function called whatDayIsIt that should return the current day of the week.
 
 */
+
+function whatDayIsIt() {
+  let today = new Date();
+  let whatDayLetters = today.toLocaleString("default", { weekday: "long" });
+  return whatDayLetters;
+}
+
+console.log(whatDayIsIt());
 
 /* EXERCISE 8
 
@@ -136,11 +224,33 @@ Write a function called howManyDays which receives a date as a parameter and ret
 
 */
 
+function howManyDays() {
+  (then = new Date(1999, 11, 17)), (now = new Date());
+
+  return Math.round((now - then) / (1000 * 60 * 60 * 24));
+}
+
+console.log(howManyDays());
+
 /* EXERCISE 10
 
 Write a function called isTodayMyBirthday which should return true if today’s your birthday, false otherwise.
 
 */
+
+function isTodayMyBirthday(randomDate) {
+  let thisDay = new Date();
+  if (
+    randomDate.getDate() === thisDay.getDate() &&
+    randomDate.getMonth() === thisDay.getMonth()
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log("Is today my birthday? ", isTodayMyBirthday(new Date("11-17")));
 
 // JS Arrays & Objects
 
@@ -154,111 +264,13 @@ and returns the given object after deleting its property named as the given stri
 
 */
 
+function deleteProp() {}
+
 /* EXERCISE 12
 
 Write a function called oldestMovie which finds the oldest movie in the provided movies array.
 
 */
-
-/* EXERCISE 13
-
-Write a function called countMovies which returns the number of movies contained in the provided movies array.
-
-*/
-
-/* EXERCISE 14
-
-Write a function called onlyTheTitles which creates an array with just the titles of the movies contained in the provided movies array.
-
-*/
-
-/* EXERCISE 15
-
-Write a function called onlyInThisMillennium which returns only the movies produced in this millennium from the provided movies array.
-
-*/
-
-/* EXERCISE 16
-
-Write a function called getMovieById which receives an id as a parameter and returns the movie with the given id from the provided movies array.
-
-*/
-
-/* EXERCISE 17
-
-Write a function called sumAllTheYears which returns the sum of all the years in which the movies in the provided movies array have been produced.
-
-*/
-
-/* EXERCISE 18
-
-Write a function called searchByTitle which receives a string as a parameter and returns all the movies in the provided movies array which contain that string in the title.
-
-*/
-
-/* EXERCISE 19
-
-Write a function called searchAndDivide which receives a string as a parameter and returns an object;
-
-this object should contain an array called match, made by all the movies from the provided movies array which contain the given string in the title,
-
-and another array unmatch with all the remaining ones.
-
-*/
-
-/* EXERCISE 20
-
-Write a function called "removeIndex" which receives a number as a parameter and returns the provided movies array without the element in the given position.
-
-*/
-
-// [EXTRAS] JS Advanced
-
-/* EXERCISE 21
-
-Create a function called "halfTree" which receives a number as a parameter and builds an "*" half tree with the given height.
-
-Example:
-
-halfTree(3)
-
-*
-
-**
-
-***
-
-*/
-
-/* EXERCISE 22
-
-Create a function called "tree" which receives a number as a parameter and builds an "*" tree with the given height.
-
-Example:
-
-tree(3)
-
-*
-
-***
-
-*****
-
-*/
-
-/* EXERCISE 23
-
-Create a function called "isItPrime" that receives a number as a parameter and returns true if the given number is a prime number.
-
-*/
-
-/* WHEN YOU ARE FINISHED
-
-Commit and push the code to your personal GitHub repository; then post the link of your commit on the Homework section of today’s Eduflow.
-
-*/
-
-/* This movies array is used throughout the exercises. You’re not supposed to alter it. */
 
 const movies = [
   {
@@ -443,3 +455,189 @@ const movies = [
       "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
   },
 ];
+
+function oldestMovie(movieList) {
+  let oldMovie = 35456534223;
+  let movieName = "";
+  movieName = "";
+
+  for (let i = 0; i < movieList.length; i++) {
+    //console.log(Number(movieList[i].Year));
+
+    if (Number(movieList[i].Year) < oldMovie) {
+      oldMovie = Number(movieList[i].Year);
+      movieName = movieList[i].Title;
+    }
+  }
+  return movieName;
+}
+//}
+
+console.log(oldestMovie(movies));
+
+/* EXERCISE 13
+
+Write a function called countMovies which returns the number of movies contained in the provided movies array.
+
+*/
+
+function countMovies() {
+  return movies.length;
+}
+
+console.log(countMovies());
+
+/* EXERCISE 14
+
+Write a function called onlyTheTitles which creates an array with just the titles of the movies contained in the provided movies array.
+
+
+*/
+
+function onlyTheTitles(movieList) {
+  let titleList = [];
+
+  for (let i = 0; i < movieList.length; i++) {
+    titleList.push(movieList[i].Title);
+  }
+  return titleList;
+}
+
+console.log(onlyTheTitles(movies));
+/* EXERCISE 15
+
+Write a function called onlyInThisMillennium which returns only the movies produced in this millennium from the provided movies array.
+
+*/
+
+function onlyInThisMillenium(movieList) {
+  let titleList = [];
+
+  for (let i = 0; i < movieList.length; i++) {
+    if (Number(movieList[i].Year) > 1999) {
+      titleList.push(movieList[i].Title);
+    }
+  }
+  return titleList;
+}
+
+console.log(onlyInThisMillenium(movies));
+
+/* EXERCISE 16
+
+Write a function called getMovieById which receives an id as a parameter and returns the movie with the given id from the provided movies array.
+
+*/
+
+function getMovieById(movieList, idStuff) {
+  let thatTitle = "";
+  for (let i = 0; i < movieList.length; i++) {
+    if (movieList[i].imdbID == idStuff) {
+      thatTitle = movieList[i].Title;
+    }
+  }
+  return thatTitle;
+}
+
+console.log(getMovieById(movies, "tt0167260"));
+
+/* EXERCISE 17
+
+Write a function called sumAllTheYears which returns the sum of all the years in which the movies in the provided movies array have been produced.
+
+*/
+
+function sumAllTheYears(movieList) {
+  let sumOfYears = "";
+  yearList = [];
+  for (let i = 0; i < movieList.length; i++) {
+    yearList.push(movieList[i].Year);
+    yearListStr = yearList.toString();
+    sumOfYears = yearList.reduce((a, b) => a + b, 0);
+  }
+  return sumOfYears;
+}
+
+console.log(sumAllTheYears(movies));
+
+/* EXERCISE 18
+
+Write a function called searchByTitle which receives a string as a parameter and returns all the movies in the provided movies array which contain that string in the title.
+
+*/
+
+function searchByTitle(movieList, titleThing) {
+  let anotherTitleList = "";
+  for (let i = 0; i < movieList.length; i++) {
+    if (movieList[i].Title == titleThing) {
+      anotherTitleList = movieList[i].Title;
+    }
+  }
+  return anotherTitleList;
+}
+
+console.log(searchByTitle("The"));
+
+/* EXERCISE 19
+
+Write a function called searchAndDivide which receives a string as a parameter and returns an object;
+
+this object should contain an array called match, made by all the movies from the provided movies array which contain the given string in the title,
+
+and another array unmatch with all the remaining ones.
+
+*/
+
+/* EXERCISE 20
+
+Write a function called "removeIndex" which receives a number as a parameter and returns the provided movies array without the element in the given position.
+
+*/
+
+// [EXTRAS] JS Advanced
+
+/* EXERCISE 21
+
+Create a function called "halfTree" which receives a number as a parameter and builds an "*" half tree with the given height.
+
+Example:
+
+halfTree(3)
+
+*
+
+**
+
+***
+
+*/
+
+/* EXERCISE 22
+
+Create a function called "tree" which receives a number as a parameter and builds an "*" tree with the given height.
+
+Example:
+
+tree(3)
+
+*
+
+***
+
+*****
+
+*/
+
+/* EXERCISE 23
+
+Create a function called "isItPrime" that receives a number as a parameter and returns true if the given number is a prime number.
+
+*/
+
+/* WHEN YOU ARE FINISHED
+
+Commit and push the code to your personal GitHub repository; then post the link of your commit on the Homework section of today’s Eduflow.
+
+*/
+
+/* This movies array is used throughout the exercises. You’re not supposed to alter it. */
